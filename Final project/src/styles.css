@@ -1,0 +1,58 @@
+form {
+  padding-top: 30px;
+  width: 20%;
+}
+h1,
+h2,
+p {
+  text-align: center;
+}
+h1 {
+  font-size: 50px;
+}
+p {
+  font-size: 18px;
+}
+h2 {
+  font-size: 40px;
+}
+
+a {
+  font-size: 40px;
+  font-weight: 300;
+}
+span {
+  padding: 25px;
+}
+
+h3 {
+  text-align: left;
+  padding-bottom: 20px;
+  padding-left: 15px;
+}
+.info {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.forecast {
+  text-align: center;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+#description {
+  text-transform: capitalize;
+}
+#degree {
+  padding: 0px;
+}
+#city {
+  text-transform: capitalize;
+}
+
+#windspeed {
+  padding: 0px;
+}
+#humidity {
+  padding: 0px;
+}
