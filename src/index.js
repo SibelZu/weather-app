@@ -59,9 +59,6 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
-
 function degreeFahrenheit(event) {
   event.preventDefault();
   let degree = document.querySelector("#degree");
@@ -79,6 +76,9 @@ function degreeCelsius(event) {
 }
 
 let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
 
 let linkFahrenheit = document.querySelector("#fahrenheit");
 linkFahrenheit.addEventListener("click", degreeFahrenheit);
