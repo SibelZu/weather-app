@@ -81,3 +81,7 @@ h3 {
   font-size: 16px;
   text-decoration: none;
 }
+.units .active {
+  color: black;
+  cursor: default;
+}

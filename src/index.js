@@ -27,10 +27,10 @@ let now = new Date();
 timeElement.innerHTML = formatDate(now);
 
 function showTemperature(response) {
+  celsiusTemperature = response.data.main.temp;
+
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#degree").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#degree").innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windspeed").innerHTML = Math.round(
     response.data.wind.speed
@@ -58,7 +58,6 @@ function handleSubmit(event) {
   let cityInput = document.querySelector("#search-input");
   search(cityInput.value);
 }
-search("Copenhagen");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -66,15 +65,25 @@ form.addEventListener("submit", handleSubmit);
 function degreeFahrenheit(event) {
   event.preventDefault();
   let degree = document.querySelector("#degree");
-  degree.innerHTML = 48;
+  linkCelsius.classList.remove("active");
+  linkFahrenheit.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  degree.innerHTML = Math.round(fahrenheitTemperature);
 }
-let linkFahrenheit = document.querySelector("#fahrenheit");
-linkFahrenheit.addEventListener("click", degreeFahrenheit);
-
 function degreeCelsius(event) {
   event.preventDefault();
   let degree = document.querySelector("#degree");
-  degree.innerHTML = 9;
+  linkCelsius.classList.add("active");
+  linkFahrenheit.classList.remove("active");
+  degree.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
+
+let linkFahrenheit = document.querySelector("#fahrenheit");
+linkFahrenheit.addEventListener("click", degreeFahrenheit);
+
 let linkCelsius = document.querySelector("#celsius");
 linkCelsius.addEventListener("click", degreeCelsius);
+
+search("Copenhagen");
