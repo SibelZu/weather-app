@@ -1,3 +1,6 @@
+body {
+  background: #f4f9fd;
+}
 form {
   padding-top: 30px;
   width: 20%;
@@ -24,7 +27,14 @@ a {
 span {
   padding: 25px;
 }
-
+.border {
+  margin-top: 40px;
+  padding-bottom: 15px;
+  border-radius: 8px;
+  border: 1px;
+  box-shadow: 10px 30px 50px rgba(50 67 100 / 10%);
+  background-color: white;
+}
 .units {
   position: relative;
   font-size: 16px;

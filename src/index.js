@@ -50,7 +50,7 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="55"
+          width="58"
         />          <br />
           <strong>${Math.round(forecastDay.temp.max)}°</strong>/${Math.round(
           forecastDay.temp.min
@@ -86,7 +86,6 @@ function showTemperature(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
-
   getForecast(response.data.coord);
 }
 
