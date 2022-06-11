@@ -26,6 +26,26 @@ let now = new Date();
 
 timeElement.innerHTML = formatDate(now);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col-2">
+          <strong>${day}</strong> <br />
+          11/04<br />
+          <i class="fa-solid fa-cloud-sun"></i>
+          <br />
+          <strong>9°</strong>/3°
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   celsiusTemperature = response.data.main.temp;
 
@@ -87,3 +107,4 @@ let linkCelsius = document.querySelector("#celsius");
 linkCelsius.addEventListener("click", degreeCelsius);
 
 search("Copenhagen");
+displayForecast();
