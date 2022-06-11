@@ -100,31 +100,7 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
-function degreeFahrenheit(event) {
-  event.preventDefault();
-  let degree = document.querySelector("#degree");
-  linkCelsius.classList.remove("active");
-  linkFahrenheit.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  degree.innerHTML = Math.round(fahrenheitTemperature);
-}
-function degreeCelsius(event) {
-  event.preventDefault();
-  let degree = document.querySelector("#degree");
-  linkCelsius.classList.add("active");
-  linkFahrenheit.classList.remove("active");
-  degree.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let linkFahrenheit = document.querySelector("#fahrenheit");
-linkFahrenheit.addEventListener("click", degreeFahrenheit);
-
-let linkCelsius = document.querySelector("#celsius");
-linkCelsius.addEventListener("click", degreeCelsius);
 
 search("Copenhagen");

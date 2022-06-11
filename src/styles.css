@@ -37,15 +37,17 @@ span {
 }
 .units {
   position: relative;
-  font-size: 16px;
-  top: -23px;
+  font-size: 18px;
+  top: -22px;
   padding: 0px;
   margin-right: 55px;
+  font-weight: 250;
 }
 .info {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 50px;
+  font-weight: 300;
 }
 .forecast {
   text-align: center;
@@ -55,6 +57,10 @@ span {
 }
 #description {
   text-transform: capitalize;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 0px;
+  padding-top: 15px;
 }
 #degree {
   padding: 0px;
@@ -77,18 +83,7 @@ span {
   padding-left: 40px;
   text-decoration: none;
 }
-#celsius {
-  position: relative;
+#current-time {
+  font-weight: 300;
   font-size: 16px;
-  text-decoration: none;
-  padding-right: 2px;
-}
-#fahrenheit {
-  position: relative;
-  font-size: 16px;
-  text-decoration: none;
-}
-.units .active {
-  color: black;
-  cursor: default;
 }
