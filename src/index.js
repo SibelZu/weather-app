@@ -26,26 +26,46 @@ let now = new Date();
 
 timeElement.innerHTML = formatDate(now);
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-2">
-          <strong>${day}</strong> <br />
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+          <strong>${formatDay(forecastDay.dt)}</strong> <br />
           11/04<br />
-          <i class="fa-solid fa-cloud-sun"></i>
-          <br />
-          <strong>9°</strong>/3°
+          <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="55"
+        />          <br />
+          <strong>${Math.round(forecastDay.temp.max)}°</strong>/${Math.round(
+          forecastDay.temp.min
+        )}°
         </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
+function getForecast(coordinates) {
+  let apiKey = "153ab0ef93038f6880fdf7939e39441f";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
 function showTemperature(response) {
   celsiusTemperature = response.data.main.temp;
 
@@ -66,6 +86,8 @@ function showTemperature(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -107,4 +129,3 @@ let linkCelsius = document.querySelector("#celsius");
 linkCelsius.addEventListener("click", degreeCelsius);
 
 search("Copenhagen");
-displayForecast();
